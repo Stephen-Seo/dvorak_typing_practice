@@ -16,7 +16,7 @@ std::string get_next_word(std::istream *i) {
         if (in != std::char_traits<char>::eof() && in != ' ' && in != '\n' && in != '\r') {
             word.push_back((char)in);
         } else if (in == ' '|| in == '\n' || in == '\r' || in == '\t') {
-            if (word.empty()) {
+            if (!word.empty()) {
                 break;
             } else {
                 continue;
