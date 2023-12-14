@@ -6,7 +6,8 @@ endif
 
 OBJDIR = objects
 
-SOURCES = src/main.cc
+SOURCES = src/main.cc \
+		src/screen.cc
 
 OBJECTS = $(addprefix ${OBJDIR}/,$(subst .cc,.o,${SOURCES}))
 

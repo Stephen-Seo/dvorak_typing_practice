@@ -1,10 +1,18 @@
+// Standard library includes
 #include <string>
 #include <iostream>
+#include <fstream>
 
-std::string get_next_word() {
+// Third party includes
+#include <raylib.h>
+
+// Local includes
+#include "screen.h"
+
+std::string get_next_word(std::istream *i) {
     std::string word;
-    while (std::cin.good()) {
-        int in = std::cin.get();
+    while (i->good()) {
+        int in = i->get();
         if (in != std::char_traits<char>::eof() && in != ' ' && in != '\n' && in != '\r') {
             word.push_back((char)in);
         } else if (in == ' '|| in == '\n' || in == '\r' || in == '\t') {
@@ -15,15 +23,41 @@ std::string get_next_word() {
     return word;
 }
 
-int main() {
-    std::string word;
+int main(int argc, char **argv) {
+    if (argc != 2) {
+        std::cout << "Expected 1 arg input filename!\n";
+        return 1;
+    }
 
-    do {
-        word = get_next_word();
-        if (!word.empty()) {
-            std::cout << word << '\n';
-        }
-    } while (!std::cin.eof());
+    std::ifstream ifs(argv[1]);
 
+    if (!ifs.good()) {
+        std::cout << "ERROR: Failed to open file \"" << argv[1] << "\"!\n";
+        return 2;
+    }
+
+    InitWindow(900, 400, "Dvorak Typing Practice");
+    SetTargetFPS(15);
+
+    {
+        Screen screen{};
+
+        std::string word;
+
+        do {
+            word = get_next_word(&ifs);
+            if (!word.empty()) {
+                screen.set_word(word);
+                while (!screen.update() && !WindowShouldClose()) {
+                    BeginDrawing();
+                    ClearBackground(BLACK);
+                    screen.draw();
+                    EndDrawing();
+                }
+            }
+        } while (!std::cin.eof() && !WindowShouldClose());
+    }
+
+    CloseWindow();
     return 0;
 }
