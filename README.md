@@ -1,6 +1,6 @@
 # Dvorak Typing Practice
 
-![Screenshot of this application](https://git.seodisparate.com/stephenseo/dvorak_typing_practice/src/commit/745b399f153f3945e05a8cb9b7388539b13901ca/pictures/dvorak_typing_practice_screenshot.png)
+![Screenshot of this application](https://git.seodisparate.com/stephenseo/dvorak_typing_practice/raw/commit/745b399f153f3945e05a8cb9b7388539b13901ca/pictures/dvorak_typing_practice_screenshot.png)
 
 Usage: <executable> <filename>
 
