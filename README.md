@@ -5,3 +5,5 @@
 Usage: `<executable> <filename>`
 
 Words from the given file will be used as the words to type within the program.
+
+Note that this program expects `dvorak_keyboard.png` to be in the working directory.
