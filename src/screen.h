@@ -16,6 +16,9 @@ constexpr int FONT_SIZE = 40;
 constexpr int CENTER_X_OFFSET = FONT_SIZE / 2;
 constexpr int PREV_OFFSET = FONT_SIZE * 2;
 
+constexpr int KEY_HALF_SIZE = 29;
+constexpr Color KEY_HIGHLIGHT_COLOR = Color{255, 255, 0, 127};
+
 class Screen {
 public:
     Screen();
@@ -39,6 +42,8 @@ private:
      * 0 - cached word data is dirty
      */
     std::bitset<32> flags;
+
+    void draw_overlay(char c);
 
 };
 

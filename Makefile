@@ -6,6 +6,8 @@ endif
 
 OBJDIR = objects
 
+HEADERS = src/screen.h
+
 SOURCES = src/main.cc \
 		src/screen.cc
 
@@ -16,7 +18,7 @@ all: dvorak_typing_practice
 dvorak_typing_practice: ${OBJECTS}
 	${CXX} ${CXX_FLAGS} -o dvorak_typing_practice $^ -lraylib
 
-${OBJDIR}/%.o: %.cc
+${OBJDIR}/%.o: %.cc ${HEADERS}
 	@mkdir -p $$(dirname $@)
 	${CXX} ${CXX_FLAGS} -c -o $@ $<
 

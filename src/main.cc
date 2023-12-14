@@ -55,7 +55,7 @@ int main(int argc, char **argv) {
                     EndDrawing();
                 }
             }
-        } while (!std::cin.eof() && !WindowShouldClose());
+        } while (!ifs.eof() && !WindowShouldClose());
     }
 
     CloseWindow();
